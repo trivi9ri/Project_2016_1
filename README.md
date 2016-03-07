@@ -4,7 +4,7 @@
 3월 2일부터 시작하여 약 16주간 진행될 것이며, 진행 상황과 관련 코드, 자료들은 Git과 Git Book에 업로드한다.  
 ▶참고 
 -문서의 텍스트 추출:  
-https://charsyam.wordpress.com/2013/10/27/%EC%9E%85-%EA%B0%9C%EB%B0%9C-%EC%98%A4%ED%94%88-%EC%86%8C%EC%8A%A4%EB%A1%9C-%EB%AC%B8%EC%84%9C%EC%9D%98-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%94%EC%B6%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%A7%8C%EB%93%A4/ 
+https://charsyam.wordpress.com/2013/10/27/%EC%9E%85-%EA%B0%9C%EB%B0%9C-%EC%98%A4%ED%94%88-%EC%86%8C%EC%8A%A4%EB%A1%9C-%EB%AC%B8%EC%84%9C%EC%9D%98-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%94%EC%B6%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%A7%8C%EB%93%A4/   
 -Python pandas module:  
 http://pandas.pydata.org/pandas-docs/version/0.15.2/tutorials.html  
 pandas DataFrame (단어 저장에 해당 구조가 유용하게 쓰일 것으로 예상)  
@@ -12,6 +12,6 @@ http://pinkwink.kr/735
 -Python file upload 
 https://pypi.python.org/pypi/gp.fileupload/0.8  
 http://stackoverflow.com/questions/12166158/upload-a-file-with-python 
--Hadoop과 Python  
+-Hadoop과 Python    
 http://www.slideshare.net/DonaldMiner/hadoop-with-python  
 -Django의 사용은 미정
