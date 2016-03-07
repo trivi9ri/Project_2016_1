@@ -11,7 +11,7 @@ pandas DataFrame (단어 저장에 해당 구조가 유용하게 쓰일 것으�
 http://pinkwink.kr/735  
 -Python file upload   
 https://pypi.python.org/pypi/gp.fileupload/0.8  
-http://stackoverflow.com/questions/12166158/upload-a-file-with-python 
+http://stackoverflow.com/questions/12166158/upload-a-file-with-python   
 -Hadoop과 Python    
 http://www.slideshare.net/DonaldMiner/hadoop-with-python  
 -Django의 사용은 미정
