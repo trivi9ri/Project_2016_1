@@ -9,7 +9,7 @@ https://charsyam.wordpress.com/2013/10/27/%EC%9E%85-%EA%B0%9C%EB%B0%9C-%EC%98%A4
 http://pandas.pydata.org/pandas-docs/version/0.15.2/tutorials.html  
 pandas DataFrame (단어 저장에 해당 구조가 유용하게 쓰일 것으로 예상)  
 http://pinkwink.kr/735  
--Python file upload 
+-Python file upload   
 https://pypi.python.org/pypi/gp.fileupload/0.8  
 http://stackoverflow.com/questions/12166158/upload-a-file-with-python 
 -Hadoop과 Python    
