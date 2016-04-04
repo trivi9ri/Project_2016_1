@@ -1,8 +1,12 @@
 import nltk
+import sys
 from nltk.corpus import conll2000 
 import pandas
 from collections import Counter
 
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 test_sents = conll2000.chunked_sents('test.txt', chunk_types=['NP']) 
 train_sents = conll2000.chunked_sents('train.txt', chunk_types=['NP'])
 
@@ -18,20 +22,33 @@ class ChunkParser(nltk.ChunkParserI):
         conlltags = [(word, pos, chunktag) for ((word,pos),chunktag) in zip(sentence, chunktags)] 
         return nltk.chunk.conlltags2tree(conlltags)
 patterns = """
-    NP: {<DT|PP\$>?<JJ>*<NN>}
-        {<NNP>+}
-        {<NN>+}"""
+    NP:  {<DT|PP\$>?<JJ>*<NN>}
+        
+        
+        """
 
-NPChunker = ChunkParser(train_sents)
+#NPChunker = ChunkParser(train_sents)
+NPChunker2 = nltk.RegexpParser(patterns)
 
 
-rawtext = open('/home/yung/Python_project/temp.txt').read()
+#rawtext = open('/home/yung/Python_project/no.txt').read()
+rawtext = open('/home/yung/download/output_ICCS06.txt').read()
 sentences = nltk.sent_tokenize(rawtext)
 sentences = [sent.lower() for sent in sentences]
 sentences = [sent.decode('utf-8') for sent in sentences]
 sentences = [nltk.word_tokenize(sent) for sent in sentences]
 sentences = [nltk.pos_tag(sent) for sent in sentences]
 
+except_list = ['you ','that ','i ','what ','this ','it ','a ','we ','he ','she ','that ','there ',
+                'where ','which ','such ','many ','much ']
+
+
+def isNumber(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 def traverse(t, np_list):
     try:
@@ -44,23 +61,27 @@ def traverse(t, np_list):
             np_chunk = ''
             for a in range(len(temp)):
                 np_chunk += temp[a][0] +' '
-            np_list.append(np_chunk)
+                
+            if (np_chunk not in except_list) & (len(np_chunk) > 3) & (isNumber(np_chunk[:-1]) == False):
+                np_list.append(np_chunk)
 
         else:
             for child in t:
                 traverse(child, np_list)
 
-
-
-np_list = ["list "]
+np_list = []
 
 for sent in sentences:
-    result = NPChunker.parse(sent)
-   
-    traverse(result, np_list)
+ #   result = NPChunker.parse(sent)
+    result2 = NPChunker2.parse(sent)
+  #  traverse(result, np_list)
+    traverse(result2, np_list)
+
 
 df = pandas.DataFrame(np_list, columns = ['NP Chunk'])
 
 unique_np_chunk = df['NP Chunk'].value_counts()
 
-print unique_np_chunk[:20]
+print unique_np_chunk[:30]
+
+
