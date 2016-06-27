@@ -10,12 +10,22 @@ import os
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import decomposition
 import time
+import argparse
+
 
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 test_sents = conll2000.chunked_sents('test.txt', chunk_types=['NP']) 
 train_sents = conll2000.chunked_sents('train.txt', chunk_types=['NP'])
+
+parser = argparse.ArgumentParser()
+parser.add_argument("filename", help = "add keyword about this file")
+args = parser.parse_args()
+fname = args.filename
+print fname
+
+start_time = time.time()
 
 class ChunkParser(nltk.ChunkParserI): 
     def __init__(self, train_sents): 
@@ -39,11 +49,15 @@ patterns = """
 NPChunker_conll2000 = ChunkParser(train_sents)
 NPChunker_patterns = nltk.RegexpParser(patterns)
 
-directory = '/home/yung/download/'
+# directory = '/home/yung/download/'
 
-filename =  'output_DEMO-SECON10.txt'
+# filename =  'output_DEMO-SECON10.txt'
 
-file_dir = directory + filename
+file_dir = fname
+
+token = fname.split('/')
+
+filename = token[-1]
 
 
 rawtext = open(file_dir).read()
@@ -276,6 +290,10 @@ for z in list_unique_keyword:
     if len(z) < 3:
         list_unique_keyword.remove(z)
 keywords = pandas.DataFrame(list_unique_keyword, columns = ['NP Chunk'])
-keywords["FileName"] = filename
-keywords.to_csv('TOPIC15_TOP10.csv', sep = ',', encoding = 'utf-8', mode = 'a')
+keywords["FileName"] = fname
+keywords.to_csv('new.csv', sep = ',', encoding = 'utf-8', mode = 'a')
+end_time = time.time()
+
+print end_time-start_time
+print filename+" keyword extraction finished. You can search this file."
 
